@@ -1,0 +1,23 @@
+{
+  "name": "react-native-flex-keyboard-spacer",
+  "version": "1.0.0",
+  "description": "react-native-keyboard-spacer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer.git"
+  },
+  "keywords": [
+    "react",
+    "react-native"
+  ],
+  "author": "YutamaKotaro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/issues"
+  },
+  "homepage": "https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer#readme"
+}

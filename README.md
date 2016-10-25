@@ -1,7 +1,7 @@
 # react-native-flex-keyboard-spacer
 This is keyboard-spacer for flex view.
-if you are anguished, hiding keyboard TextInput, this package give you carm.
-In the future this package will be applied scrollview.
+If you are anguished at hiding keyboard TextInput, this package makes you calm.
+In the future this package will be applied to scrollview.
 
 ## install
 

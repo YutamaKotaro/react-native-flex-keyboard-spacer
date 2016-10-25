@@ -5,7 +5,7 @@ In the future this package will be applied scrollview.
 
 ## install
 
-```
+```sh
 npm install react-native-flex-keyboard-spacer
 ```
 
@@ -14,26 +14,27 @@ npm install react-native-flex-keyboard-spacer
 
 ## howToUse
 
-```
+```js
 class TextField extends Component {
   render() {
     const {fields} = this.props;
     _fields = fields(this);
     return (
-    <View style={styles.textInputContainer}>
-      <Text style={styles.label}>{this.props.label}</Text>
-      <TextInput
+      <View style={styles.textInputContainer}>
+        <Text style={styles.label}>{this.props.label}</Text>
+        <TextInput
           {..._fields}
           style={styles.textInput}
-      />
-    </View>
-  )}
+        />
+      </View>
+    );
+  }
 }
 
 const TextFieldContainer = (prop) => (
-    <View style={styles.formContainer}>
-      <TextField label={prop.label} fields={prop.fields} / >
-    </View>
+  <View style={styles.formContainer}>
+    <TextField label={prop.label} fields={prop.fields} / >
+  </View>
 );
 
 const App = (prop) => {
@@ -45,7 +46,9 @@ const App = (prop) => {
         <TextFieldContainer  fields={fields[2]} label="form3" />
         <TextFieldContainer  fields={fields[3]} label="form4" />
     </View>
-);}
+  );
+}
+
 export default KeyBoardSpacer({
   numbers: 4,
 })(App);

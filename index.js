@@ -24,12 +24,8 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
         duration: 300,
         create: {
           type: LayoutAnimation.Types.spring,
-          property: LayoutAnimation.Properties.top,
+          property: LayoutAnimation.Properties.opacity,
           springDamping: 200,
-        },
-        update: {
-          type: LayoutAnimation.Types.spring,
-          springDamping: 200
         }
     }
     this._listeners = null;
@@ -40,7 +36,6 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
   componentWillMount() {
     const { height } = Dimensions.get('window');
     this.setState({ viewHeight: height })
-    console.log(height)
   }
 
   componentDidMount() {
@@ -69,8 +64,7 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
   }
 
   renderAnimation(elementHeight, keyboardHeight) {
-      console.log(this.state.viewHeight, elementHeight, keyboardHeight)
-      const diff = (this.state.viewHeight - keyboardHeight) - elementHeight - 50;
+      const diff = (this.state.viewHeight - keyboardHeight) - elementHeight;
       console.log(diff)
       if(diff < 0 )this.setState({ top: diff });
   }
@@ -79,12 +73,13 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
     for(let i =0, l=formNames.numbers; i<l; i ++){
         const ref = `keybord_forms_${i}`
         this.ids.push(
-          arg => ({
+          (arg, _ref) => ({
             ref,
             onFocus: e => {
-              arg.refs[ref].measure(
+              const __ref = _ref || ref;
+              arg.refs[__ref].measure(
                 (fx,fy,width, height,px,py) => {
-                  this.renderAnimation(py, this.state.keyboardHeight)
+                  this.renderAnimation(py + height, this.state.keyboardHeight)
                 }
               );
             }
@@ -96,10 +91,9 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
        top: this.state.top,
     }
     LayoutAnimation.configureNext(this._layoutAnimation);
-    console.log(speacer)
     return (
       <View style={speacer} ref="test" >
-          <PassChild fields={this.ids}/>
+          <PassChild spacerProps={this.ids} {...this.props} />
       </View>
     );
   }

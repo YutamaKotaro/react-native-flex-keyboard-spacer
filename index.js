@@ -70,7 +70,6 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
 
     renderAnimation(elementHeight, keyboardHeight) {
         const diff = (this.state.viewHeight - keyboardHeight) - elementHeight - 40;
-        console.log(diff)
         if(diff < 0 ){
             LayoutAnimation.configureNext(this._layoutAnimation)
             this.setState({ top: diff });

@@ -1,50 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
-    View,
-    Text,
-    StyleSheet,
-    TextInput,
-    findNodeHandle,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from 'react-native';
 
 const styles = StyleSheet.create({
-    textInputContainer: {
-      flex: 1,
-      borderBottomColor: '#008080',
-      borderBottomWidth: 3,
-      justifyContent: 'flex-end',
-      marginLeft: 30,
-      marginRight: 30,
-    },
-    textInput: {
-      height: 30,
-    },
-    label: {
-      color: '#555',
-    }
+  container: {
+    justifyContent: 'flex-end',
+    borderBottomColor: '#008080',
+    borderBottomWidth: 3,
+  },
+  label: {
+    color: '#555',
+  },
+  textInput: {
+    height: 30,
+  },
 });
 
-
-class TextField extends Component {
-  constructor(props) {
-      super(props);
-  }
-
+export default class TextField extends Component {
   render() {
-  const {fields} = this.props;
-  _fields = fields(this);
-  return (
-  <View style={styles.textInputContainer}>
-    <Text style={styles.label}>{this.props.label}</Text>
-    <TextInput
-        {..._fields}
-        style={styles.textInput}
-    />
-  </View>
-)}
+    const { style, label, fields } = this.props;
+    return (
+      <View style={[styles.container, style]}>
+        <Text style={styles.label}>{label}</Text>
+        <TextInput {...fields(this)} style={styles.textInput} />
+      </View>
+    );
+  }
 }
-TextField.defaultProps = {
-  label: 'noLabel',
-};
-
-export default TextField;

@@ -14,6 +14,8 @@ npm install react-native-flex-keyboard-spacer
 
 ## howToUse
 
+See also [demo codes](./demo)
+
 ```js
 class TextField extends Component {
   render() {
@@ -39,7 +41,9 @@ const App = (props) => {
   );
 };
 
-export default KeyBoardSpacer({
+const WrappedApp = KeyBoardSpacer({
   numbers: 4,
 })(App);
+
+AppRegistry.registerComponent('formKeySpace', () => WrappedApp);
 ```

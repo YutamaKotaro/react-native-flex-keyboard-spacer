@@ -14,7 +14,7 @@ npm install react-native-flex-keyboard-spacer
 
 ## howToUse
 
-See also [demo codes](./demo)
+See also [demo codes](./demo).
 
 ```js
 class TextField extends Component {

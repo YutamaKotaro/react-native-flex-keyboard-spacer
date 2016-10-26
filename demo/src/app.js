@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = (prop) => {
-  const { fields } = prop;
+const App = (props) => {
+  const { fields } = props;
   return (
     <View style={styles.container}>
       <TextField fields={fields[0]} label="form1" style={{flex: 4}} />

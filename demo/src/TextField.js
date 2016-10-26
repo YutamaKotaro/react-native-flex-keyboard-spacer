@@ -12,25 +12,22 @@ const styles = StyleSheet.create({
     borderBottomColor: '#008080',
     borderBottomWidth: 3,
   },
-  textInput: {
-    height: 30,
-  },
   label: {
     color: '#555',
+  },
+  textInput: {
+    height: 30,
   },
 });
 
 export default class TextField extends Component {
   render() {
-    const { fields, style } = this.props;
+    const { style, label, fields } = this.props;
     return (
       <View style={[styles.container, style]}>
-        <Text style={styles.label}>{this.props.label}</Text>
-        <TextInput
-            {...fields(this)}
-            style={styles.textInput}
-        />
+        <Text style={styles.label}>{label}</Text>
+        <TextInput {...fields(this)} style={styles.textInput} />
       </View>
-    )
+    );
   }
 }

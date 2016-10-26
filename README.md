@@ -17,37 +17,27 @@ npm install react-native-flex-keyboard-spacer
 ```js
 class TextField extends Component {
   render() {
-    const {fields} = this.props;
-    _fields = fields(this);
+    const { style, label, fields } = this.props;
     return (
-      <View style={styles.textInputContainer}>
-        <Text style={styles.label}>{this.props.label}</Text>
-        <TextInput
-          {..._fields}
-          style={styles.textInput}
-        />
+      <View style={[styles.container, style]}>
+        <Text style={styles.label}>{label}</Text>
+        <TextInput {...fields(this)} style={styles.textInput} />
       </View>
     );
   }
 }
 
-const TextFieldContainer = (prop) => (
-  <View style={styles.formContainer}>
-    <TextField label={prop.label} fields={prop.fields} / >
-  </View>
-);
-
-const App = (prop) => {
-  const { fields } = prop;
+const App = (props) => {
+  const { fields } = props;
   return (
     <View style={styles.container}>
-        <TextFieldContainer fields={fields[0]} label="form1" />
-        <TextFieldContainer  fields={fields[1]} label="form2" />
-        <TextFieldContainer  fields={fields[2]} label="form3" />
-        <TextFieldContainer  fields={fields[3]} label="form4" />
+      <TextField fields={fields[0]} label="form1" style={{flex: 4}} />
+      <TextField fields={fields[1]} label="form2" style={{flex: 3}} />
+      <TextField fields={fields[2]} label="form3" style={{flex: 2}} />
+      <TextField fields={fields[3]} label="form4" style={{flex: 1}} />
     </View>
   );
-}
+};
 
 export default KeyBoardSpacer({
   numbers: 4,

@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 import TextField from './TextField';
-import KeyBoardSpacer from './keyBoardSpacer';
+import KeyBoardSpacer from './KeyboardSpacer';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
 });
 
 const App = (props) => {
-  const { fields } = props;
+  const { spacerProps } = props;
   return (
     <View style={styles.container}>
-      <TextField fields={fields[0]} label="form1" style={{flex: 4}} />
-      <TextField fields={fields[1]} label="form2" style={{flex: 3}} />
-      <TextField fields={fields[2]} label="form3" style={{flex: 2}} />
-      <TextField fields={fields[3]} label="form4" style={{flex: 1}} />
+      <TextField spacerProps={spacerProps[0]} label="form1" style={{flex: 4}} />
+      <TextField spacerProps={spacerProps[1]} label="form2" style={{flex: 3}} />
+      <TextField spacerProps={spacerProps[2]} label="form3" style={{flex: 2}} />
+      <TextField spacerProps={spacerProps[3]} label="form4" style={{flex: 1}} />
     </View>
   );
 };

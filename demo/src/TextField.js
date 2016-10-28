@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
 
 export default class TextField extends Component {
   render() {
-    const { style, label, fields } = this.props;
+    const { style, label, spacerProps } = this.props;
     return (
       <View style={[styles.container, style]}>
         <Text style={styles.label}>{label}</Text>
-        <TextInput {...fields(this)} style={styles.textInput} />
+        <TextInput {...spacerProps(this)} style={styles.textInput} />
       </View>
     );
   }

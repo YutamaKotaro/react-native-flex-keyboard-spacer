@@ -73,7 +73,7 @@ const KeyBoardSpacer = passProps => PassChild => class KeyBoardSpacerInner exten
     renderAnimation(elementHeight, keyboardHeight) {
         const diff = (this.state.viewHeight - keyboardHeight) - elementHeight - 40;
         const diffRelative = this.state.top + diff;
-        if (diff < 0) {
+        if (diff < 0 && this.state.top === 0) {
             LayoutAnimation.configureNext(this._layoutAnimation);
             this.setState({ top: diff });
         } else if (this.state.top < 0 && diffRelative < 0 && !this.unTrack) {

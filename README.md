@@ -57,7 +57,7 @@ export default keyBoardSpacer({
 #### unTrackMode
 |false| true|
 |:--- |:--- |
-|![formspacerdemo](./sampleImages/trackMode.gif)|![formspacerdemo](./sampleImages/unTrackMode.gif)|
+|![formspacerdemo](./sampleImages/trackMode.gif)|![formspacerdemo](./sampleImages/untrackMode.gif)|
 
 
 ### spacerProps

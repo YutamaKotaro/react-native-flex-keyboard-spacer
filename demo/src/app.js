@@ -30,5 +30,4 @@ App.propTypes = {
 
 export default keyBoardSpacer({
     numbers: 4,
-    unTrack: true,
 })(App);

@@ -1,20 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
-    StyleSheet,
     Platform,
     Keyboard,
-    TouchableHighlight,
-    findNodeHandle,
     Dimensions,
     LayoutAnimation,
     View,
-} from 'react-native'
+} from 'react-native';
 
-const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Component {
+const KeyBoardSpacer = passProps => PassChild => class KeyBoardSpacerInner extends Component {
     constructor(prop) {
         super(prop);
         this.state = {
-            keyboardSpace: 0,
+            keyboardHeight: 0,
             isKeyboardOpened: false,
             viewHeight: 0,
             top: 0,
@@ -32,6 +29,7 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
                 springDamping: 0.7,
             },
         };
+        this.unTrack = passProps.unTrack;
         this._listeners = null;
         this.updateKeyboardSpace = this.updateKeyboardSpace.bind(this);
         this.resetKeyboardSpace = this.resetKeyboardSpace.bind(this);
@@ -56,55 +54,59 @@ const KeyBoardSpacer = formNames => PassChild => class KeyBoardSpacer extends Co
     }
 
     updateKeyboardSpace(frames) {
-      if (!frames.endCoordinates) {
-          return;
-      }
-      const keyboardHeight =  frames.endCoordinates.height;
-      this.setState({ keyboardHeight })
+        if (!frames.endCoordinates) {
+            return;
+        }
+        const keyboardHeight = frames.endCoordinates.height;
+        this.setState({ keyboardHeight });
     }
 
     resetKeyboardSpace() {
-        LayoutAnimation.configureNext(this._layoutAnimation)
-        this.setState({ top: 0 })
+        LayoutAnimation.configureNext(this._layoutAnimation);
+        this.setState({ top: 0 });
     }
 
     renderAnimation(elementHeight, keyboardHeight) {
         const diff = (this.state.viewHeight - keyboardHeight) - elementHeight - 40;
-        if(diff < 0 ){
-            LayoutAnimation.configureNext(this._layoutAnimation)
+        const diffRelative = this.state.top + diff;
+        if (diff < 0) {
+            LayoutAnimation.configureNext(this._layoutAnimation);
             this.setState({ top: diff });
+        } else if (this.state.top < 0 && diffRelative < 0 && !this.unTrack) {
+            LayoutAnimation.configureNext(this._layoutAnimation);
+            this.setState({ top: diffRelative });
         }
     }
 
     render() {
-      for(let i =0, l=formNames.numbers; i<l; i ++){
-          const ref = `keybord_forms_${i}`
-          this.ids.push(
-              (arg, option) => ({
-                  ref,
-                  onFocus: e => {
-                      const _option = option || {};
-                      const __ref = _option.ref || ref;
-                      const extraHeight = _option.height || 0;
-                      arg.refs[__ref].measure(
-                        (fx,fy,width, height,px,py) => {
-                            this.renderAnimation(
-                                py + height + extraHeight,
-                                this.state.keyboardHeight
-                            );
-                        }
-                      );
-                  }
-              })
-            );
-      }
+        for (let i = 0, l = passProps.numbers; i < l; i++) {
+            const ref = `keybord_forms_${i}`;
+            this.ids.push(
+                (arg, option) => ({
+                    ref,
+                    onFocus: () => {
+                        const _option = option || {};
+                        const __ref = _option.ref || ref;
+                        const extraHeight = _option.height || 0;
+                        arg.refs[__ref].measure(
+                          (fx, fy, width, height, px, py) => {
+                              this.renderAnimation(
+                                  py + height + extraHeight,
+                                  this.state.keyboardHeight
+                              );
+                          }
+                        );
+                    },
+                })
+              );
+        }
 
-      return (
-        <View style={{flex:1, top: this.state.top}} >
-            <PassChild spacerProps={this.ids} {...this.props} />
-        </View>
-      );
+        return (
+            <View style={{ flex: 1, top: this.state.top }} >
+                <PassChild spacerProps={this.ids} {...this.props} />
+            </View>
+        );
     }
-}
+};
 
 export default KeyBoardSpacer;

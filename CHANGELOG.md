@@ -8,6 +8,7 @@
 * **demo:** fix-up demo codes ([540f076](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/540f076))
 * **demo:** minimize demo codes ([4d1b316](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/4d1b316))
 * **index:** add optionObject ([e15242d](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/e15242d))
+* **index:** fix index.js ([e9037f5](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/e9037f5))
 * **index:** fix trackMode bug ([adddd9d](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/adddd9d))
 * **index:** fixFiles ([77f108c](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/77f108c))
 * **index:** remove console.log ([4658129](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/4658129))
@@ -18,6 +19,3 @@
 ### Features
 
 * **index:** add trackMode and unTrackMode ([94bb572](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/94bb572))
-
-
-

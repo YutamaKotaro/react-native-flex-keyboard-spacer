@@ -9,17 +9,23 @@ import {
     Dimensions,
     LayoutAnimation,
     View,
+    UIManager,
 } from 'react-native';
 
 const KeyBoardSpacer = passProps => PassChild => class KeyBoardSpacerInner extends Component {
     constructor(prop) {
         super(prop);
+        if (Platform.OS === 'android') {
+            /* eslint no-unused-expressions: "off"*/
+            UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+        }
         this.state = {
             keyboardHeight: 0,
             isKeyboardOpened: false,
             viewHeight: 0,
             top: 0,
         };
+        this._android = passProps.android || false;
         this.ids = [];
         this._layoutAnimation = {
             duration: 300,
@@ -89,6 +95,7 @@ const KeyBoardSpacer = passProps => PassChild => class KeyBoardSpacerInner exten
                 (arg, option) => ({
                     ref,
                     onFocus: () => {
+                        if (Platform.OS === 'android' && !this._android) return false;
                         const _option = option || {};
                         const __ref = _option.ref || ref;
                         const extraHeight = _option.height || 0;
@@ -100,11 +107,11 @@ const KeyBoardSpacer = passProps => PassChild => class KeyBoardSpacerInner exten
                               );
                           }
                         );
+                        return false;
                     },
                 })
               );
         }
-
         return (
             <View style={{ flex: 1, top: this.state.top }} >
                 <PassChild spacerProps={this.ids} {...this.props} />

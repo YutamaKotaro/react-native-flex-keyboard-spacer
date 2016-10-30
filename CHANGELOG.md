@@ -1,3 +1,13 @@
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/compare/1.0.5...v1.0.6) (2016-10-30)
+
+
+### Features
+
+* **index:** new feature, android work or not ([431c08f](https://github.com/YutamaKotaro/react-native-flex-keyboard-spacer/commit/431c08f))
+
+
+
 <a name="1.0.5"></a>
 ## 1.0.5 (2016-10-29)
 

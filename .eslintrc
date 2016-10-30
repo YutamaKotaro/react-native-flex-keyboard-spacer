@@ -28,7 +28,7 @@
        "import/prefer-default-export": "off",
        "no-plusplus": "off",
        "react/forbid-prop-types": "off",
-
+       "max-len": "off"
    },
    "plugins": [
        "react"

@@ -53,6 +53,7 @@ export default keyBoardSpacer({
 |:--- | :--- |:--- |
 | number | 0 |how many generate spacerProps |
 | unTrack | false | if true, unTrackMode|
+| android | false | if false, this pkg not work on Android |
 
 #### unTrackMode
 |false| true|

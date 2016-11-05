@@ -90,16 +90,16 @@ const KeyBoardSpacer = passProps => PassChild => class KeyBoardSpacerInner exten
 
     render() {
         for (let i = 0, l = passProps.numbers; i < l; i++) {
-            const ref = `keybord_forms_${i}`;
+            const ref = (_ref) => { this.ids[i].ref = _ref; };
             this.ids.push(
                 (arg, option) => ({
                     ref,
                     onFocus: () => {
                         if (Platform.OS === 'android' && !this._android) return false;
                         const _option = option || {};
-                        const __ref = _option.ref || ref;
+                        const __ref = _option.ref || this.ids[i].ref;
                         const extraHeight = _option.height || 0;
-                        arg.refs[__ref].measure(
+                        __ref.measure(
                           (fx, fy, width, height, px, py) => {
                               this.renderAnimation(
                                   py + height + extraHeight,

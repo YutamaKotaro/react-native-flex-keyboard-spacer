@@ -1,3 +1,7 @@
+/* eslint import/no-extraneous-dependencies:"off" */
+/* eslint import/no-unresolved:"off" */
+/* eslint import/extensions:"off" */
+
 import React, { Component } from 'react';
 import {
     Platform,
@@ -85,7 +89,7 @@ const KeyBoardSpacer = passProps => PassChild => class KeyBoardSpacerInner exten
     }
 
     render() {
-        for (let i = 0, l = passProps.numbers; i < l; i++) {
+        for (let i = this.ids.length, l = passProps.numbers; i < l; i++) {
             const ref = (_ref) => { this.ids[i].ref = _ref; };
             this.ids.push(
                 (arg, option) => ({
